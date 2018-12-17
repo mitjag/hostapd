@@ -1,4 +1,4 @@
-# hotstapd
+# hostapd
 Setting hostapd in Armbian using USB WiFi adapter
 
 # Hardware
@@ -23,7 +23,6 @@ and follow armbian build instructions.
 
 Full OS image
 Target bionic OS release
-
 
 Etcher to burn card
 https://www.balena.io/etcher/
@@ -146,7 +145,7 @@ Wiphy phy1
 ```
 
 
-You can see in hostapd.conf default configuration for wlan0 change it to new adapter as listed with ip or ifconfig (eg.: my usb wifi adapter is: wlx4cedfbd746e2)
+There is default configuration in hostapd.conf (/etc/hostapd.conf) for wlan0 change it to your new adapter name as listed with ip or ifconfig (eg.: my usb wifi adapter is: wlx4cedfbd746e2)
 
 ```
 root@skywirenode3:/etc# cat /etc/hostapd.conf
@@ -203,7 +202,7 @@ ctrl_interface_group=0root@skywirenode3:/etc#
 ```
 
 
-To enable service to load hostapd.conf uncomment line with DAEMON_CONF parameter.
+To enable service to load hostapd.conf (/etc/default/hostapd) uncomment line with DAEMON_CONF parameter
 
 ```
 root@skywirenode3:/etc# cat /etc/default/hostapd
@@ -230,7 +229,8 @@ DAEMON_CONF="/etc/hostapd.conf"
 root@skywirenode3:/etc#
 ```
 
-In folder /etc/network there are network example configuration files copy interfaces.hostapd over interfaces and update parameters
+In folder /etc/network there are network example configuration files copy interfaces.hostapd and overwrite interfaces and update parameters. Add your WiFi adapter (copy configuration from wlan0)
+
 ```
 root@skywirenode3:/etc/network# ls /etc/network
 if-down.d       if-pre-up.d  interfaces          interfaces.d        interfaces.espressobin  interfaces.network-manager  interfaces.r1        interfaces.r1switch
